@@ -5,17 +5,20 @@ var radius = Math.min(width, height) / 2;
 
 // Breadcrumb dimensions: width, height, spacing, width of tip/tail.
 var b = {
-  w: 75, h: 30, s: 3, t: 10
+  w: 175, h: 30, s: 3, t: 10
 };
 
 // Mapping of step names to colors.
 var colors = {
-  "home": "#5687d1",
-  "product": "#7b615c",
-  "search": "#de783b",
-  "account": "#6ab975",
-  "other": "#a173d1",
-  "end": "#bbbbbb"
+  "ComputerProgramIntern": "#faac58",
+  "JrQAEngineer": "#7b615c",
+  "SrQAEngineer": "#de783b",
+  "JrSoftwareDev": "#6ab975",
+  "BIArchitect": "#a173d1",
+  "SystemAnalyst": "#5687d1",
+  "SrSoftwareDev": "#82caff",
+  "MobileAppDev": "#c66f6f",
+  "BIAnalyst": "#41a9cc"
 };
 
 // Total size of all segments; we set this later, after loading the data.
@@ -98,6 +101,9 @@ function mouseover(d) {
   d3.select("#explanation")
       .style("visibility", "");
 
+  d3.select("#laddername")
+      .style("visibility", "hidden")
+
   var sequenceArray = getAncestors(d);
   updateBreadcrumbs(sequenceArray, percentageString);
 
@@ -134,6 +140,10 @@ function mouseleave(d) {
 
   d3.select("#explanation")
       .style("visibility", "hidden");
+
+  d3.select("#laddername")
+      .style("visibility", "visible")
+
 }
 
 // Given a node in a partition layout, return an array of all of its ancestor
@@ -222,7 +232,7 @@ function drawLegend() {
 
   // Dimensions of legend item: width, height, spacing, radius of rounded rect.
   var li = {
-    w: 75, h: 30, s: 3, r: 3
+    w: 175, h: 30, s: 3, r: 3
   };
 
   var legend = d3.select("#legend").append("svg:svg")
